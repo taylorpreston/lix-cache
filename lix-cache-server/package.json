@@ -1,0 +1,40 @@
+{
+  "name": "lix-cache-server",
+  "version": "0.1.0",
+  "description": "Development server for Lix Cache - zero-config caching backend",
+  "type": "module",
+  "bin": {
+    "lix-cache-server": "./bin/lix-cache-server.js"
+  },
+  "files": [
+    "bin",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  },
+  "keywords": [
+    "cache",
+    "caching",
+    "development",
+    "server",
+    "docker",
+    "lix-cache",
+    "devtools"
+  ],
+  "author": "Lix Cache",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorpreston/lix-cache.git",
+    "directory": "lix-cache-server"
+  },
+  "homepage": "https://github.com/taylorpreston/lix-cache#readme",
+  "bugs": {
+    "url": "https://github.com/taylorpreston/lix-cache/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "preferGlobal": false
+}

@@ -1,0 +1,6 @@
+packages:
+  - 'lix-cache-sdk'
+  - 'lix-cache-demo'
+  - 'lix-cache-server'
+  - 'lix-cache-benchmarks'
+  - 'lix-cache-docs'

@@ -1,0 +1,11 @@
+/* Tailwind CSS imports */
+@import "tailwindcss";
+
+/* Custom styles for Lix Cache documentation */
+
+:root {
+  --sl-hue-accent: 200;
+  --sl-color-accent-low: #1e40af;
+  --sl-color-accent: #3b82f6;
+  --sl-color-accent-high: #60a5fa;
+}

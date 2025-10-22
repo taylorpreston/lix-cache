@@ -1,0 +1,31 @@
+# Source files
+src/
+tests/
+examples/
+
+# Configuration
+*.config.ts
+tsconfig.json
+.eslintrc.*
+.prettierrc
+
+# Development
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+
+# CI/CD
+.github/
+
+# Documentation (keep README.md)
+*.md
+!README.md
+
+# Environment
+.env
+.env.local

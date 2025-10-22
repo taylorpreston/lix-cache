@@ -1,0 +1,129 @@
+# ============================================
+# Lix Cache - Root .gitignore
+# ============================================
+
+# ============================================
+# Directories to exclude from initial release
+# ============================================
+lix-cache-demo/
+lix-cache-benchmarks/
+
+# ============================================
+# Node.js / TypeScript
+# ============================================
+node_modules/
+dist/
+build/
+*.tsbuildinfo
+coverage/
+.turbo/
+
+# Lock files - pnpm-lock.yaml SHOULD be committed
+# Keep this commented to ensure pnpm-lock.yaml is tracked
+# pnpm-lock.yaml
+
+# ============================================
+# Elixir / Mix
+# ============================================
+/_build/
+/deps/
+/cover/
+/doc/
+erl_crash.dump
+*.ez
+*.beam
+*.tar
+
+# Temporary files from tests
+/tmp/
+
+# ============================================
+# Environment & Secrets
+# ============================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+
+# ============================================
+# IDE / Editors
+# ============================================
+# VSCode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# JetBrains (IntelliJ, WebStorm, etc.)
+.idea/
+*.iml
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ============================================
+# Operating System
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ============================================
+# Logs
+# ============================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============================================
+# Testing & Coverage
+# ============================================
+coverage/
+.nyc_output/
+*.lcov
+
+# ============================================
+# Build artifacts
+# ============================================
+*.tar.gz
+*.zip
+
+# ============================================
+# Docker (local development only)
+# ============================================
+# We want to keep Dockerfiles, but ignore local docker-compose overrides
+docker-compose.override.yml
+
+# ============================================
+# Misc
+# ============================================
+.cache/
+.temp/
+.tmp/

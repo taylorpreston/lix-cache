@@ -1,0 +1,72 @@
+{
+  "name": "lix-cache-sdk",
+  "version": "0.1.0",
+  "description": "TypeScript-first caching SDK with exceptional developer experience",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint src/**/*.ts",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "prepublishOnly": "pnpm run build"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "keywords": [
+    "cache",
+    "typescript",
+    "redis",
+    "memcached",
+    "developer-experience"
+  ],
+  "author": "Lix Cache",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorpreston/lix-cache.git",
+    "directory": "lix-cache-sdk"
+  },
+  "homepage": "https://github.com/taylorpreston/lix-cache#readme",
+  "bugs": {
+    "url": "https://github.com/taylorpreston/lix-cache/issues"
+  },
+  "peerDependencies": {
+    "zod": "^3.22.0"
+  },
+  "peerDependenciesMeta": {
+    "zod": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.0.0",
+    "zod": "^3.22.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

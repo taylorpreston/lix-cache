@@ -1,0 +1,29 @@
+# Elixir build artifacts
+/_build
+/deps
+/.fetch
+/erl_crash.dump
+
+# Development files
+/.elixir_ls
+/.vscode
+/.idea
+
+# Git
+/.git
+/.gitignore
+
+# Documentation
+/README.md
+/CHANGELOG.md
+
+# Test files
+/test
+
+# Mix artifacts
+/*.ez
+
+# Temporary files
+*.swp
+*~
+.DS_Store

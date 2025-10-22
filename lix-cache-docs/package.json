@@ -1,0 +1,32 @@
+{
+  "name": "lix-cache-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "keywords": [],
+  "author": "Lix Cache",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taylorpreston/lix-cache.git",
+    "directory": "lix-cache-docs"
+  },
+  "packageManager": "pnpm@10.13.1",
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/starlight": "^0.36.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "^5.14.4",
+    "sharp": "^0.34.4",
+    "starlight-typedoc": "^0.21.3",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.3"
+  }
+}
