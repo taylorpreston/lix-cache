@@ -1,0 +1,78 @@
+name: SDK CI
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'lix-cache-sdk/**'
+      - '.github/workflows/sdk-ci.yml'
+  pull_request:
+    paths:
+      - 'lix-cache-sdk/**'
+      - '.github/workflows/sdk-ci.yml'
+
+jobs:
+  test:
+    name: Test SDK
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: lix-cache-sdk
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
+          cache-dependency-path: 'lix-cache-sdk/pnpm-lock.yaml'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Type check
+        run: pnpm type-check
+
+      - name: Build SDK
+        run: pnpm build
+
+      - name: Set up Elixir (for backend)
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: '1.17.3'
+          otp-version: '27.1'
+
+      - name: Start Lix Cache backend
+        run: |
+          cd ../lix_cache_api
+          mix local.hex --force
+          mix local.rebar --force
+          mix deps.get
+          MIX_ENV=dev mix run --no-halt &
+          echo "Backend PID: $!"
+
+          # Wait for backend to be ready
+          timeout 30 sh -c 'until curl -f http://localhost:4000/health; do sleep 1; done'
+          echo "Backend is ready!"
+
+      - name: Run tests
+        run: pnpm test
+        env:
+          LIX_CACHE_URL: http://localhost:4000
+
+      - name: Check for uncommitted changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "ERROR: Uncommitted changes detected after build"
+            git status
+            exit 1
+          fi

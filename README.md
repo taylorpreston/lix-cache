@@ -152,7 +152,7 @@ lix-cache/
 |---------|-------------|---------|
 | **[lix-cache-sdk](./lix-cache-sdk)** | TypeScript SDK for Lix Cache | `npm install lix-cache-sdk` |
 | **[lix-cache-server](./lix-cache-server)** | Zero-config dev server | `npx lix-cache-server` |
-| **lix_cache_api** | Elixir backend | `docker pull lixcache/server` |
+| **lix_cache_api** | Elixir backend | `docker pull ghcr.io/taylorpreston/lix-cache` |
 
 ---
 
@@ -357,7 +357,7 @@ docker run -d \
   -e LIX_CACHE_LIMIT=100000 \
   -e LIX_AUTH_ENABLED=true \
   -e LIX_API_KEYS=your-secret-key \
-  lixcache/server:latest
+  ghcr.io/taylorpreston/lix-cache:latest
 ```
 
 ### Environment Variables

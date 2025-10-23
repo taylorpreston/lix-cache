@@ -103,7 +103,7 @@ If you're developing locally, you may need to build the image first:
 
 ```bash
 cd lix_cache_api
-docker build -t lixcache/server:latest .
+docker build -t ghcr.io/taylorpreston/lix-cache:latest .
 ```
 
 ### Port already in use

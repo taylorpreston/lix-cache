@@ -1,0 +1,79 @@
+name: Backend CI
+
+on:
+  push:
+    branches: ['**']
+    paths:
+      - 'lix_cache_api/**'
+      - '.github/workflows/backend-ci.yml'
+  pull_request:
+    paths:
+      - 'lix_cache_api/**'
+      - '.github/workflows/backend-ci.yml'
+
+jobs:
+  test:
+    name: Test (Elixir ${{ matrix.elixir }} / OTP ${{ matrix.otp }})
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        elixir: ['1.17.3']
+        otp: ['27.1']
+
+    defaults:
+      run:
+        working-directory: lix_cache_api
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          elixir-version: ${{ matrix.elixir }}
+          otp-version: ${{ matrix.otp }}
+
+      - name: Restore dependencies cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            lix_cache_api/deps
+            lix_cache_api/_build
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+
+      - name: Install dependencies
+        run: mix deps.get
+
+      - name: Check formatting
+        run: mix format --check-formatted
+
+      - name: Compile code (check warnings)
+        run: mix compile --warnings-as-errors
+
+      - name: Run tests
+        run: mix test
+
+  docker-build-test:
+    name: Test Docker Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image (test only)
+        uses: docker/build-push-action@v5
+        with:
+          context: ./lix_cache_api
+          file: ./lix_cache_api/Dockerfile
+          platforms: linux/amd64
+          push: false
+          tags: lix-cache:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

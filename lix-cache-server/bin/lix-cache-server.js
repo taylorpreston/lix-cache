@@ -4,7 +4,7 @@ import { spawn } from 'child_process';
 import { platform } from 'os';
 
 const CONTAINER_NAME = 'lix-cache-dev';
-const IMAGE_NAME = 'lixcache/server:latest';
+const IMAGE_NAME = 'ghcr.io/taylorpreston/lix-cache:latest';
 const DEFAULT_PORT = process.env.LIX_CACHE_PORT || '4000';
 
 // Colors for terminal output
@@ -141,7 +141,7 @@ async function main() {
       log('❌ Failed to pull image', colors.red);
       log('', colors.reset);
       log('You may need to build the image locally:', colors.yellow);
-      log('  cd lix_cache_api && docker build -t lixcache/server:latest .', colors.blue);
+      log('  cd lix_cache_api && docker build -t ghcr.io/taylorpreston/lix-cache:latest .', colors.blue);
       process.exit(1);
     }
   }
